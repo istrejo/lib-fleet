@@ -1,0 +1,37 @@
+.field {
+  margin-bottom: 0.875rem;
+  input {
+    width: 100%;
+  }
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
+// .p-dialog .p-fluid .p-grid .p-col .field label {
+//   margin-bottom: 0.5rem;
+// }
+
+// .p-button-danger {
+//   background-color: #ff4d4f;
+//   border-color: #ff4d4f;
+// }
+
+.button-section {
+  p-button {
+    width: 50%;
+    .p-button {
+      height: 40px;
+      width: 100%;
+    }
+
+    .p-button-label {
+      font-weight: 600;
+    }
+  }
+  button {
+    width: 50%;
+  }
+}

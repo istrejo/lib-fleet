@@ -1,0 +1,75 @@
+<p-dialog
+  [(visible)]="displayModal"
+  modal="true"
+  header="Crear nuevo vehículo"
+  [style]="{ width: '480px' }"
+  [closable]="true"
+  (onHide)="close()"
+>
+  <!-- <div class="p-fluid"> -->
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-full flex flex-column">
+    <div class="field">
+      <label class="text-700" for="vehicleName">Nombre del vehículo<span class="text-primary">*</span></label>
+      <input formControlName="vehicleName" id="vehicleName" pInputText placeholder="Furgón Dodge" />
+    </div>
+    <div class="field">
+      <label class="text-700" for="patent">Patente<span class="text-primary">*</span></label>
+      <input formControlName="patent" id="patent" pInputText placeholder="ABCD12" />
+    </div>
+    <div class="grid">
+      <div class="col-6 pb-0">
+        <div class="field">
+          <label class="text-700" for="vehicleType">Tipo de vehículo<span class="text-primary">*</span></label>
+          <p-dropdown
+            formControlName="vehicleType"
+            appendTo="body"
+            styleClass="w-full"
+            id="vehicleType"
+            [options]="vehicleTypes"
+            placeholder="Selecciona el tipo"
+            required
+          ></p-dropdown>
+        </div>
+      </div>
+
+      <div class="col-6 pb-0">
+        <div class="field">
+          <label class="text-700" for="vehicleStatus">Estado del vehículo<span class="text-primary">*</span></label>
+          <p-dropdown
+            formControlName="vehicleStatus"
+            appendTo="body"
+            styleClass="w-full"
+            id="vehicleStatus"
+            [options]="vehicleStatuses"
+            placeholder="Selecciona el estado"
+            required
+          ></p-dropdown>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="text-700" for="assignedUser">Usuario asignado</label>
+      <p-dropdown
+        formControlName="assignedUser"
+        appendTo="body"
+        styleClass="w-full"
+        id="assignedUser"
+        [options]="users"
+        placeholder="Selecciona el usuario"
+      ></p-dropdown>
+    </div>
+    <div class="button-section w-full flex align-items-center justify-content-between mt-3 gap-2">
+      <p-button
+        [label]="vehicleToEdit ? 'Descartar cambios' : 'Descartar vehículo'"
+        [outlined]="true"
+        styleClass="text-sm font-semibold"
+        severity="danger"
+        (onClick)="close()"
+      />
+      <p-button type="submit" [label]="vehicleToEdit ? 'Guardar cambios' : 'Crear vehículo'" styleClass="text-sm" />
+    </div>
+  </form>
+
+  <!-- </div> -->
+  <div class="p-d-flex p-jc-between p-mt-4"></div>
+</p-dialog>

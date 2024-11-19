@@ -1,0 +1,22 @@
+<div class="p-card w-full flex flex-row justify-content-between align-items-center px-3 py-3 gap-3">
+  <div class="flex gap-2 md:gap-3">
+    <p-checkbox [binary]="true" inputId="binary" />
+    <div class="flex flex-column align-items-start gap-2">
+      <span class="font-semibold">{{ vehicle.name }}</span>
+      <div class="flex align-items-center flex-wrap gap-1">
+        <span class="text-xs font-medium p-1 border-1 border-300 border-round">{{ vehicle.plate }}</span>
+        <div class="flex align-items-center text-xs font-medium p-1 border-1 border-300 border-round">
+          <img class="w-1rem mr-1" [src]="vehicleType" alt="" />
+          <span>
+            {{ vehicle.type }}
+          </span>
+        </div>
+
+        <lib-tag [status]="vehicle.status" />
+      </div>
+      <span class="text-sm font-normal text-900 assigned-user">Usuario asignado: {{ vehicle.assignedUser.name }}</span>
+    </div>
+  </div>
+  <p-menu #menu [popup]="true" [model]="menuItems"></p-menu>
+  <p-button icon="pi pi-ellipsis-v" text="true" severity="secondary" (click)="menu.toggle($event)"> </p-button>
+</div>

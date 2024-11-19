@@ -1,0 +1,43 @@
+<section class="p-4 h-screen">
+  <div class="table-header flex justify-content-between align-items-center px-4 py-2 border-1 border-200">
+    <h2 class="text-base font-semibold flex flex-column md:flex-row md:gap-3">
+      Todos los vehículos <span class="text-sm font-normal">{{ vehicles().length }} vehículos creados</span>
+    </h2>
+    <div class="flex justify-content-end align-items-center flex-wrap gap-3">
+      <p-button
+        label="Crear vehículo"
+        icon="pi pi-plus-circle"
+        [outlined]="true"
+        styleClass="border-300 text-sm"
+        severity="secondary"
+        (click)="displayModal = true"
+      />
+      <p-button
+        label="Filtros"
+        icon="pi pi-filter"
+        styleClass="border-300 text-sm"
+        [outlined]="true"
+        severity="secondary"
+        (click)="menu.toggle($event)"
+      />
+      <p-menu #menu [model]="filterItems" [popup]="true">
+        <ng-template pTemplate="item" let-item>
+          <p-checkbox
+            class="p-menuitem-link"
+            [(ngModel)]="item.checked"
+            [binary]="true"
+            [label]="item.label"
+          ></p-checkbox>
+        </ng-template>
+      </p-menu>
+    </div>
+  </div>
+  <div class="table card border-x-1 border-bottom-1 border-top-0 border-200 overflow-y-scroll p-4">
+    <div class="grid-container">
+      @for (vehicle of vehiclesTemp(); track vehicle.id) {
+        <lib-vehicle-card class="grid-item mx-auto" [vehicle]="vehicle" (selectedVehicle)="editVehicle($event)" />
+      }
+    </div>
+  </div>
+</section>
+<lib-create-modal [displayModal]="displayModal" [vehicleToEdit]="vehicleToEdit" (modalClosed)="onCloseModal($event)" />

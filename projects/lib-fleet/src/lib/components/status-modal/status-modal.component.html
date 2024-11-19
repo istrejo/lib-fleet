@@ -1,0 +1,27 @@
+<p-dialog header="Cambiar estado" styleClass="w-25rem " [modal]="true" [(visible)]="visible" (onHide)="close()">
+  <div class="filter-group flex flex-column gap-4 mt-1 mb-4">
+    <p-dropdown
+      appendTo="body"
+      [(ngModel)]="selectedOption"
+      styleClass="w-full text-sm"
+      [options]="statuses"
+      placeholder="Selecciona un nuevo estado"
+    >
+      <ng-template let-status pTemplate="item">
+        <lib-tag [status]="status.value"></lib-tag>
+      </ng-template>
+    </p-dropdown>
+  </div>
+
+  <div class="w-full flex justify-content-center">
+    <button
+      pButton
+      class="w-full"
+      severity="secondary"
+      [disabled]="!selectedOption.length"
+      label="Cambiar estado"
+      (click)="changeStatus()"
+      styleClass
+    ></button>
+  </div>
+</p-dialog>

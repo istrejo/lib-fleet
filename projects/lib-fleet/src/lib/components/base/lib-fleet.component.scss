@@ -1,0 +1,60 @@
+.table-header {
+  border-radius: 12px 12px 0 0;
+}
+
+.table {
+  height: calc(100% - (95px + 2rem));
+  border-radius: 0 0 12px 12px;
+
+  @media (min-width: 520px) {
+    height: calc(100% - (48px + 2rem));
+  }
+}
+
+.grid-container {
+  display: grid;
+  gap: 20px; /* Espacio entre elementos */
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (width >= 768px) {
+  /* Tablets */
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 1024px) {
+  /* Notebooks */
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 1536px) {
+  /* Pantallas más grandes */
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Limitar el ancho máximo de cada elemento */
+.grid-item {
+  max-width: 450px;
+  height: 100%;
+}
+
+.assigned-user {
+  text-wrap: balance;
+}
+
+p-menu {
+  p-checkbox {
+    width: 100%;
+  }
+}
+.p-checkbox-label {
+  width: 100%;
+}
